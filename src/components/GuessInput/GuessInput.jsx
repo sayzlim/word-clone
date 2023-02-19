@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput() {
+function GuessInput({ guessHistory, setGuessHistory }) {
 	const [input, setInput] = React.useState('Guess');
 
 	function handleSubmit(event) {
@@ -10,9 +10,17 @@ function GuessInput() {
 
 		if (nextInput.length < 5) {
 			alert('Please enter minimum 5 characters');
+		} else {
+			const nextGuessHistory = [
+				...guessHistory,
+				{
+					guess: nextInput,
+					id: crypto.randomUUID(),
+				},
+			];
+			setGuessHistory(nextGuessHistory);
+			setInput('');
 		}
-
-		setInput('');
 	}
 
 	return (
