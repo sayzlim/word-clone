@@ -6,7 +6,6 @@ function GuessInput({ guessHistory, setGuessHistory }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		const nextInput = input.toUpperCase();
-		console.log(`INPUT: ${nextInput}`);
 
 		if (nextInput.length < 5) {
 			alert('Please enter minimum 5 characters');

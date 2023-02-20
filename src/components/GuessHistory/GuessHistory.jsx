@@ -1,7 +1,6 @@
 import React from 'react';
 
 function GuessHistory({ guessHistory, setGuessHistory }) {
-	console.log(guessHistory);
 	return (
 		<div className="guess-results">
 			{guessHistory.map(({ guess, id}) => {
