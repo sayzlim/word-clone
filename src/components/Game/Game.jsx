@@ -28,6 +28,7 @@ function Game() {
 			<GuessInput
 				guessHistory={guessHistory}
 				setGuessHistory={setGuessHistory}
+				answer = {answer}
 			/>
 		</>
 	);

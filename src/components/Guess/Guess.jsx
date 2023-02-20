@@ -8,12 +8,14 @@ function Guess({ guessHistory, setGuessHistory }) {
 		NUM_OF_GUESSES_ALLOWED
 	);
 
+	console.log("Guess History");
 	console.info(guessHistory);
 
 	const nextGuess = guessHistory.slice(
 		Math.max(guessHistory.length - 5, 0)
 	);
 
+	console.log("Next Guess History");
 	console.info(nextGuess);
 
 	function BlankCell() {
@@ -28,17 +30,17 @@ function Guess({ guessHistory, setGuessHistory }) {
 		);
 	}
 
-	function FilledCell({ guess }) {
-		console.log(guess);
-		const guessArray = guess.split('');
+	function FilledCell({guess}) {
+		console.log("Guess Object: ");
+		console.info(guess);
 
 		return (
 			<>
-				{guessArray.map((char) => {
+				{guess.map(({ letter, status }) => {
 					const id = crypto.randomUUID();
 					return (
 						<span key={id} className="cell">
-							{char}
+							{letter}
 						</span>
 					);
 				})}
@@ -50,7 +52,7 @@ function Guess({ guessHistory, setGuessHistory }) {
 		<>
 			{numOfGuessesAllowed.map((num, index) => {
 				const isBlank = guessHistory[index] === undefined;
-				console.log(isBlank);
+				console.info(isBlank);
 				const id = crypto.randomUUID();
 				return (
 					<p key={id} className="guess">
