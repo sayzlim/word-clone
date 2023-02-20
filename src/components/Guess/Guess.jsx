@@ -38,8 +38,9 @@ function Guess({ guessHistory, setGuessHistory }) {
 			<>
 				{guess.map(({ letter, status }) => {
 					const id = crypto.randomUUID();
+					const letterStatus = `cell ${status}`;
 					return (
-						<span key={id} className="cell">
+						<span key={id} className={letterStatus}>
 							{letter}
 						</span>
 					);
