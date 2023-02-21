@@ -230,3 +230,18 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+
+/* Components */
+button {
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 1ex 2ch;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #111;
+}
+
+.flow > * + * {
+  margin-top: 1.5ex;
+}

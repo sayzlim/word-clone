@@ -1,26 +1,27 @@
 import React from 'react';
+import ButtonRestart from '../ButtonRestart';
 
-function Banner({ gameResult, guessCount, answer }) {
+function Banner({ gameResult, guessCount, gameAnswer, setGameAnswer }) {
 	const WinMessage = function () {
 		return (
-			<div className="happy banner">
+			<div className="flow happy banner">
 				<p>
 					<strong>Congratulations!</strong> Got it in{' '}
-					<strong>
-						{guessCount} guesses.
-					</strong>
+					<strong>{guessCount} guesses.</strong>
 				</p>
+				<ButtonRestart gameAnswer={gameAnswer} setGameAnswer={setGameAnswer} />
 			</div>
 		);
 	};
 
 	const LoseMessage = function () {
 		return (
-			<div className="sad banner">
+			<div className="flow sad banner">
 				<p>
 					Sorry, the correct answer is{' '}
-					<strong>{answer}</strong>.
+					<strong>{gameAnswer}</strong>.
 				</p>
+				<ButtonRestart gameAnswer={gameAnswer} setGameAnswer={setGameAnswer} />
 			</div>
 		);
 	};
