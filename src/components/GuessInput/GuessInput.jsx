@@ -9,9 +9,10 @@ function GuessInput({
 	guessCount,
 	setGuessCount,
 	gameResult,
-	setGameResult
+	setGameResult,
 }) {
 	const [input, setInput] = React.useState('Guess');
+	const [isDisabled, setDisabled] = React.useState(false);
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -47,8 +48,12 @@ function GuessInput({
 				isGuessCorrect
 			) {
 				setGameResult('Win');
+				const nextIsDisabled = true;
+				setDisabled(nextIsDisabled);
 			} else if (nextGuessCount >= NUM_OF_GUESSES_ALLOWED) {
 				setGameResult('Lose');
+				const nextIsDisabled = true;
+				setDisabled(nextIsDisabled);
 			}
 
 			// Reset the input query
@@ -67,6 +72,7 @@ function GuessInput({
 				type="text"
 				maxLength="5"
 				value={input}
+				disabled={isDisabled}
 				onChange={(event) => setInput(event.target.value)}
 			/>
 		</form>
