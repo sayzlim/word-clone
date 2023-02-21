@@ -1,7 +1,16 @@
 import React from 'react';
 import ButtonRestart from '../ButtonRestart';
 
-function Banner({ gameResult, guessCount, gameAnswer, setGameAnswer }) {
+function Banner({
+	gameResult,
+	setGameResult,
+	guessCount,
+	gameAnswer,
+	setGameAnswer,
+	setGuessHistory,
+	setIsDisabled,
+	setGuessCount
+}) {
 	const WinMessage = function () {
 		return (
 			<div className="flow happy banner">
@@ -9,7 +18,14 @@ function Banner({ gameResult, guessCount, gameAnswer, setGameAnswer }) {
 					<strong>Congratulations!</strong> Got it in{' '}
 					<strong>{guessCount} guesses.</strong>
 				</p>
-				<ButtonRestart gameAnswer={gameAnswer} setGameAnswer={setGameAnswer} />
+				<ButtonRestart
+					gameAnswer={gameAnswer}
+					setGameResult={setGameResult}
+					setGameAnswer={setGameAnswer}
+					setGuessHistory={setGuessHistory}
+					setIsDisabled = {setIsDisabled}
+					setGuessCount = {setGuessCount}
+				/>
 			</div>
 		);
 	};
@@ -21,7 +37,14 @@ function Banner({ gameResult, guessCount, gameAnswer, setGameAnswer }) {
 					Sorry, the correct answer is{' '}
 					<strong>{gameAnswer}</strong>.
 				</p>
-				<ButtonRestart gameAnswer={gameAnswer} setGameAnswer={setGameAnswer} />
+				<ButtonRestart
+					gameAnswer={gameAnswer}
+					setGameResult={setGameResult}
+					setGameAnswer={setGameAnswer}
+					setGuessHistory={setGuessHistory}
+					setIsDisabled = {setIsDisabled}
+					setGuessCount = {setGuessCount}
+				/>
 			</div>
 		);
 	};

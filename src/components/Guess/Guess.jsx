@@ -2,7 +2,7 @@ import React from 'react';
 import { range } from '../../utils.js';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants.js';
 
-function Guess({ guessHistory, setGuessHistory }) {
+function Guess({ guessHistory }) {
 	const numOfGuessesAllowed = range(
 		0,
 		NUM_OF_GUESSES_ALLOWED

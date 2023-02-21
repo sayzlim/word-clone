@@ -5,14 +5,14 @@ import { NUM_OF_GUESSES_ALLOWED } from '../../constants.js';
 function GuessInput({
 	guessHistory,
 	setGuessHistory,
-	answer,
+	gameAnswer,
 	guessCount,
 	setGuessCount,
-	gameResult,
 	setGameResult,
+	isDisabled,
+	setIsDisabled
 }) {
-	const [input, setInput] = React.useState('Guess');
-	const [isDisabled, setDisabled] = React.useState(false);
+	const [input, setInput] = React.useState('');
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -22,7 +22,7 @@ function GuessInput({
 			alert('Please enter minimum 5 characters');
 		} else {
 			// Store the input result into the history array
-			const guessResult = checkGuess(nextInput, answer);
+			const guessResult = checkGuess(nextInput, gameAnswer);
 			const nextGuessHistory = [
 				...guessHistory,
 				{
@@ -38,7 +38,7 @@ function GuessInput({
 
 			// Check game result
 			const isGuessCorrect =
-				!!!nextInput.localeCompare(answer);
+				!!!nextInput.localeCompare(gameAnswer);
 
 			if (
 				nextGuessCount <= NUM_OF_GUESSES_ALLOWED &&
@@ -46,11 +46,11 @@ function GuessInput({
 			) {
 				setGameResult('Win');
 				const nextIsDisabled = true;
-				setDisabled(nextIsDisabled);
+				setIsDisabled(nextIsDisabled);
 			} else if (nextGuessCount >= NUM_OF_GUESSES_ALLOWED) {
 				setGameResult('Lose');
 				const nextIsDisabled = true;
-				setDisabled(nextIsDisabled);
+				setIsDisabled(nextIsDisabled);
 			}
 
 			// Reset the input query
@@ -69,6 +69,7 @@ function GuessInput({
 				type="text"
 				maxLength="5"
 				value={input}
+				autoFocus
 				disabled={isDisabled}
 				onChange={(event) => setInput(event.target.value)}
 			/>

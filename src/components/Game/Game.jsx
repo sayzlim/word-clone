@@ -23,29 +23,32 @@ function Game() {
 	const [gameResult, setGameResult] =
 		React.useState('Ongoing');
 	const [guessCount, setGuessCount] = React.useState(0);
+	const [isDisabled, setIsDisabled] = React.useState(false);
 
 	console.info(gameAnswer);
 
 	return (
 		<>
-			<Guess
-				guessHistory={guessHistory}
-				setGuessHistory={setGuessHistory}
-			/>
+			<Guess guessHistory={guessHistory} />
 			<GuessInput
 				guessHistory={guessHistory}
 				setGuessHistory={setGuessHistory}
-				answer={gameAnswer}
+				gameAnswer={gameAnswer}
 				guessCount={guessCount}
 				setGuessCount={setGuessCount}
-				gameResult={gameResult}
 				setGameResult={setGameResult}
+				isDisabled={isDisabled}
+				setIsDisabled={setIsDisabled}
 			/>
 			<Banner
 				gameResult={gameResult}
+				setGameResult={setGameResult}
 				guessCount={guessCount}
 				gameAnswer={gameAnswer}
 				setGameAnswer={setGameAnswer}
+				setGuessHistory={setGuessHistory}
+				setIsDisabled={setIsDisabled}
+				setGuessCount={setGuessCount}
 			/>
 		</>
 	);
