@@ -7,9 +7,8 @@ function Banner({ gameResult, guessCount, answer }) {
 				<p>
 					<strong>Congratulations!</strong> Got it in{' '}
 					<strong>
-						{guessCount} guesses. {gameResult}
+						{guessCount} guesses.
 					</strong>
-					.
 				</p>
 			</div>
 		);

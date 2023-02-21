@@ -36,12 +36,9 @@ function GuessInput({
 			const nextGuessCount = guessCount + 1;
 			setGuessCount(nextGuessCount);
 
-			console.log('Guess Count: ' + nextGuessCount);
-
 			// Check game result
 			const isGuessCorrect =
 				!!!nextInput.localeCompare(answer);
-			console.log('Guess Result: ' + isGuessCorrect);
 
 			if (
 				nextGuessCount <= NUM_OF_GUESSES_ALLOWED &&
