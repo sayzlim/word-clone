@@ -27,6 +27,20 @@ function Game() {
 
 	console.info(gameAnswer);
 
+	function resetGame() {
+		const nextGuessHistory = [];
+		setGuessHistory(nextGuessHistory);
+
+		const nextGameResult = 'Ongoing';
+		setGameResult(nextGameResult);
+
+		const nextGameAnswer = sample(WORDS);
+		setGameAnswer(nextGameAnswer);
+
+		setGuessCount(0);
+		setIsDisabled(false);
+	}
+
 	return (
 		<>
 			<Guess guessHistory={guessHistory} />
@@ -45,10 +59,7 @@ function Game() {
 				setGameResult={setGameResult}
 				guessCount={guessCount}
 				gameAnswer={gameAnswer}
-				setGameAnswer={setGameAnswer}
-				setGuessHistory={setGuessHistory}
-				setIsDisabled={setIsDisabled}
-				setGuessCount={setGuessCount}
+				resetGame={resetGame}
 			/>
 		</>
 	);

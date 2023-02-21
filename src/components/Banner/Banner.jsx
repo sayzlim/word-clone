@@ -6,10 +6,7 @@ function Banner({
 	setGameResult,
 	guessCount,
 	gameAnswer,
-	setGameAnswer,
-	setGuessHistory,
-	setIsDisabled,
-	setGuessCount
+	resetGame
 }) {
 	const WinMessage = function () {
 		return (
@@ -20,11 +17,7 @@ function Banner({
 				</p>
 				<ButtonRestart
 					gameAnswer={gameAnswer}
-					setGameResult={setGameResult}
-					setGameAnswer={setGameAnswer}
-					setGuessHistory={setGuessHistory}
-					setIsDisabled = {setIsDisabled}
-					setGuessCount = {setGuessCount}
+					resetGame={resetGame}
 				/>
 			</div>
 		);
@@ -39,11 +32,7 @@ function Banner({
 				</p>
 				<ButtonRestart
 					gameAnswer={gameAnswer}
-					setGameResult={setGameResult}
-					setGameAnswer={setGameAnswer}
-					setGuessHistory={setGuessHistory}
-					setIsDisabled = {setIsDisabled}
-					setGuessCount = {setGuessCount}
+					resetGame={resetGame}
 				/>
 			</div>
 		);
