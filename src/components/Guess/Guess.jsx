@@ -8,15 +8,15 @@ function Guess({ guessHistory, setGuessHistory }) {
 		NUM_OF_GUESSES_ALLOWED
 	);
 
-	console.log("Guess History");
-	console.info(guessHistory);
+	// console.log("Guess History");
+	// console.info(guessHistory);
 
 	const nextGuess = guessHistory.slice(
 		Math.max(guessHistory.length - 5, 0)
 	);
 
-	console.log("Next Guess History");
-	console.info(nextGuess);
+	// console.log("Next Guess History");
+	// console.info(nextGuess);
 
 	function BlankCell() {
 		return (
@@ -31,8 +31,8 @@ function Guess({ guessHistory, setGuessHistory }) {
 	}
 
 	function FilledCell({guess}) {
-		console.log("Guess Object: ");
-		console.info(guess);
+		// console.log("Guess Object: ");
+		// console.info(guess);
 
 		return (
 			<>

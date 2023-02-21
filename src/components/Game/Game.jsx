@@ -3,7 +3,7 @@ import React from 'react';
 import Guess from '../Guess';
 import GuessHistory from '../GuessHistory';
 import GuessInput from '../GuessInput';
-
+import Banner from '../Banner';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
@@ -14,22 +14,23 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-	const [guessHistory, setGuessHistory] = React.useState(
-		[]
-	);
+	const [guessHistory, setGuessHistory] = React.useState([]);
+	const [gameResult, setGameResult] = React.useState('Ongoing');
+	const [guessCount, setGuessCount] = React.useState(0);
 
 	return (
 		<>
 			<Guess guessHistory={guessHistory} setGuessHistory={setGuessHistory} />
-			<GuessHistory
-				guessHistory={guessHistory}
-				setGuessHistory={setGuessHistory}
-			/>
 			<GuessInput
 				guessHistory={guessHistory}
 				setGuessHistory={setGuessHistory}
 				answer = {answer}
+				guessCount = {guessCount}
+				setGuessCount = {setGuessCount}
+				gameResult = {gameResult}
+				setGameResult = {setGameResult}
 			/>
+			<Banner gameResult={gameResult} guessCount={guessCount} answer={answer} />
 		</>
 	);
 }

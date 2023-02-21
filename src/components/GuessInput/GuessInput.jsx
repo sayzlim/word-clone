@@ -1,7 +1,16 @@
 import React from 'react';
 import { checkGuess } from '../../game-helpers.js';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants.js';
 
-function GuessInput({ guessHistory, setGuessHistory, answer }) {
+function GuessInput({
+	guessHistory,
+	setGuessHistory,
+	answer,
+	guessCount,
+	setGuessCount,
+	gameResult,
+	setGameResult
+}) {
 	const [input, setInput] = React.useState('Guess');
 
 	function handleSubmit(event) {
@@ -11,8 +20,8 @@ function GuessInput({ guessHistory, setGuessHistory, answer }) {
 		if (nextInput.length < 5) {
 			alert('Please enter minimum 5 characters');
 		} else {
-			const guessResult = checkGuess(nextInput, answer)
-
+			// Store the input result into the history array
+			const guessResult = checkGuess(nextInput, answer);
 			const nextGuessHistory = [
 				...guessHistory,
 				{
@@ -21,6 +30,28 @@ function GuessInput({ guessHistory, setGuessHistory, answer }) {
 				},
 			];
 			setGuessHistory(nextGuessHistory);
+
+			// Reduce the number of guess with each sucessful submit
+			const nextGuessCount = guessCount + 1;
+			setGuessCount(nextGuessCount);
+
+			console.log('Guess Count: ' + nextGuessCount);
+
+			// Check game result
+			const isGuessCorrect =
+				!!!nextInput.localeCompare(answer);
+			console.log('Guess Result: ' + isGuessCorrect);
+
+			if (
+				nextGuessCount <= NUM_OF_GUESSES_ALLOWED &&
+				isGuessCorrect
+			) {
+				setGameResult('Win');
+			} else if (nextGuessCount >= NUM_OF_GUESSES_ALLOWED) {
+				setGameResult('Lose');
+			}
+
+			// Reset the input query
 			setInput('');
 		}
 	}
